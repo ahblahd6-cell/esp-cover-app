@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ESP Cover App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="cover-screen active" id="coverScreen">
+        <div class="cover-glow"></div>
+
+        <header class="topbar">
+          <div class="brand">
+            <span class="brand-dot"></span>
+            <span>Nova Ops</span>
+          </div>
+          <button class="ghost-btn" id="themeToggle">Tema</button>
+        </header>
+
+        <main class="cover-content">
+          <div class="cover-copy">
+            <p class="eyebrow">Sistema avançado</p>
+            <h1>Monitoramento em tempo real</h1>
+            <p class="subtitle">
+              Interface com capa inicial e painel ESP para acompanhar status do jogador,
+              mapa, inventário e dados em ação.
+            </p>
+
+            <div class="action-row">
+              <button class="primary-btn" id="startBtn">Entrar</button>
+              <button class="secondary-btn" id="demoBtn">Visualizar demo</button>
+            </div>
+          </div>
+
+          <div class="cover-card">
+            <div class="status-pill">
+              <span class="pulse"></span>
+              Online
+            </div>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <span>HP</span>
+                <strong id="hpValue">100%</strong>
+              </div>
+              <div class="mini-card">
+                <span>ARM</span>
+                <strong id="armorValue">92%</strong>
+              </div>
+              <div class="mini-card">
+                <span>XP</span>
+                <strong id="xpValue">14.8k</strong>
+              </div>
+              <div class="mini-card">
+                <span>LVL</span>
+                <strong id="lvlValue">22</strong>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <div class="dashboard hidden" id="dashboard">
+        <aside class="sidebar">
+          <div class="brand sidebar-brand">
+            <span class="brand-dot"></span>
+            <span>Nova Ops</span>
+          </div>
+
+          <nav class="nav">
+            <button class="nav-item active">Dashboard</button>
+            <button class="nav-item">Mapa</button>
+            <button class="nav-item">Equipe</button>
+            <button class="nav-item">Inventário</button>
+          </nav>
+
+          <div class="sidebar-card">
+            <p>Modo</p>
+            <strong>ESP Ativo</strong>
+          </div>
+        </aside>
+
+        <main class="main-panel">
+          <header class="panel-header">
+            <div>
+              <p class="eyebrow muted">Acompanhamento</p>
+              <h2>Sistema de visão</h2>
+            </div>
+
+            <div class="status-actions">
+              <button class="toggle-btn active" id="espToggle">ESP ON</button>
+              <button class="back-btn" id="backBtn">Voltar</button>
+            </div>
+          </header>
+
+          <section class="stats-grid">
+            <article class="stat-card">
+              <span>Vida</span>
+              <strong id="lifeStat">100</strong>
+              <small>100% de integridade</small>
+            </article>
+            <article class="stat-card">
+              <span>Escudo</span>
+              <strong id="shieldStat">92</strong>
+              <small>Proteção ativa</small>
+            </article>
+            <article class="stat-card">
+              <span>Ammo</span>
+              <strong id="ammoStat">28</strong>
+              <small>Balas restantes</small>
+            </article>
+            <article class="stat-card">
+              <span>Tempo</span>
+              <strong id="timeStat">12:48</strong>
+              <small>Partida em andamento</small>
+            </article>
+          </section>
+
+          <section class="content-row">
+            <div class="panel-card map-panel">
+              <div class="card-header">
+                <h3>Mapa</h3>
+                <span class="tag">Live</span>
+              </div>
+
+              <div class="map-area">
+                <div class="map-point player"></div>
+                <div class="map-point enemy enemy-1"></div>
+                <div class="map-point enemy enemy-2"></div>
+                <div class="map-point enemy enemy-3"></div>
+                <div class="map-point loot"></div>
+              </div>
+            </div>
+
+            <div class="panel-card info-panel">
+              <div class="card-header">
+                <h3>Dados do alvo</h3>
+                <span class="tag ok">Online</span>
+              </div>
+
+              <ul class="info-list">
+                <li><span>Nome</span><strong>Jinx_77</strong></li>
+                <li><span>Distância</span><strong>18.4m</strong></li>
+                <li><span>Posição</span><strong>Sector 02</strong></li>
+                <li><span>Equipe</span><strong>Azul</strong></li>
+                <li><span>Ritmo</span><strong>Alto</strong></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="bottom-row">
+            <div class="panel-card log-panel">
+              <div class="card-header">
+                <h3>Log</h3>
+                <span class="tag">Atualizado</span>
+              </div>
+
+              <div class="log-list" id="logList">
+                <p><span>09:41</span> Conexão estável.</p>
+                <p><span>09:42</span> Mapa sincronizado.</p>
+                <p><span>09:43</span> Item raro localizado.</p>
+              </div>
+            </div>
+
+            <div class="panel-card activity-panel">
+              <div class="card-header">
+                <h3>Atividade</h3>
+                <span class="tag neutral">IA</span>
+              </div>
+
+              <div class="progress-block">
+                <label>Temperatura</label>
+                <div class="progress"><span style="width: 72%"></span></div>
+              </div>
+
+              <div class="progress-block">
+                <label>Energia</label>
+                <div class="progress"><span style="width: 88%"></span></div>
+              </div>
+
+              <div class="progress-block">
+                <label>Compatibilidade</label>
+                <div class="progress"><span style="width: 96%"></span></div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
